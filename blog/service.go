@@ -1,11 +1,12 @@
 package blog
 
 import (
-	"github.com/fpcxm911/pcblog/sever/blog/database"
 	"net/rpc"
+
+	"github.com/fpcxm911/pcblog/sever/database"
 )
 
-// ServiceName
+// ServiceName blog service
 const ServiceName = "BlogService"
 
 // UserInterface User related interface
@@ -39,7 +40,7 @@ func RegisterBlogService(svc ServiceInterface) error {
 
 // AccountInfo Defines the info of an account
 type AccountInfo struct {
-	databse.Account
+	user database.User
 }
 
 // Article Defines the element of an article

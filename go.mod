@@ -12,3 +12,5 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.3 // indirect
 )
+
+replace pcblog/databse => ./database //indirect

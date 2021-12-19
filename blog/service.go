@@ -3,7 +3,7 @@ package blog
 import (
 	"net/rpc"
 
-	"github.com/fpcxm911/pcblog/sever/database"
+	"github.com/fpcxm911/pcblog/database"
 )
 
 // ServiceName blog service

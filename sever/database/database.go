@@ -82,7 +82,7 @@ func SetupDefaultDatabase() *gorm.DB {
 	password := "19990918pm12"
 	host := "127.0.0.1"
 	port := 3306
-	Dbname := "pcblog"
+	Dbname := "blog"
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local", username, password, host, port, Dbname,
 	)

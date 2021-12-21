@@ -1,6 +1,8 @@
+// Package database Here defines all the table metadata and database related constants
 package database
 
 import (
+	"errors"
 	"fmt"
 
 	"gorm.io/driver/mysql"
@@ -52,6 +54,7 @@ func (s Subscriber) TableName() string {
 	return "user_subscriber"
 }
 
+// Article Defines the element of an article
 type Article struct {
 	ArticleID      int64  `gorm:"column:article_id"`
 	UserID         int64  `gorm:"column:user_id"`
@@ -61,13 +64,14 @@ type Article struct {
 }
 
 func (a Article) TableName() string {
-	return "article"
+	return "articles"
 }
 
 type Inbox struct {
 	ID             int64  `gorm:"column:id"`
 	ArticleID      int64  `gorm:"column:article_id"`
 	UserID         int64  `gorm:"column:user_id"`
+	AuthorUserID   int64  `gorm:"column:author_user_id"`
 	ArticleTitle   string `gorm:"column:article_title"`
 	ArticleContent string `gorm:"column:article_content"`
 	ArticleDate    int64  `gorm:"column:article_date"`
@@ -77,7 +81,7 @@ func (i Inbox) TableName() string {
 	return "inbox"
 }
 
-func SetupDefaultDatabase() *gorm.DB {
+func SetupDefaultDatabase() (*gorm.DB, error) {
 	username := "root"
 	password := "19990918pm12"
 	host := "127.0.0.1"
@@ -90,8 +94,12 @@ func SetupDefaultDatabase() *gorm.DB {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		panic("[SetupDefaultDatabase#newConnection error]: " + err.Error() + " " + dsn)
+		return db, errors.New("[SetupDefaultDatabase#newConnection error]: " + err.Error() + " " + dsn)
 	}
 
-	return db
+	return db, nil
 }
+
+//func init() {
+//	Db := SetupDefaultDatabase()
+//}

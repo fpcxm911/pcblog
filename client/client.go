@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/rpc"
 	blog "pcblog/blog"
@@ -30,7 +31,7 @@ func (b *BlogClient) Unsubscribe(request [2]database.User, reply *string) error 
 	return b.Client.Call(blog.ServiceName+".Unsubscribe", request, reply)
 }
 
-func (b *BlogClient) NewArticle(request database.Article, reply *string) error {
+func (b *BlogClient) NewArticle(request database.ArticleToPublish, reply *string) error {
 	return b.Client.Call(blog.ServiceName+".NewArticle", request, reply)
 }
 
@@ -86,11 +87,12 @@ func main() {
 
 	// test publish new article
 	var reply *string
-	article := database.Article{
+	article := database.ArticleToPublish{
 		UserID:         5,
 		ArticleTitle:   "TestUser1's article",
-		ArticleContent: "TestUser1's article",
+		ArticleContent: "I want to see if I can receive rpc reply",
 		ArticleDate:    0,
 	}
 	err = client.NewArticle(article, reply)
+	fmt.Println(reply)
 }

@@ -29,7 +29,7 @@ type UserInterface interface {
 // ArticleInterface Article related methods
 type ArticleInterface interface {
 	//NewArticle publish new article
-	NewArticle(request database.Article, reply *string) error
+	NewArticle(request database.ArticleToPublish, reply *string) error
 }
 
 // InboxInterface method that can perform at inbox

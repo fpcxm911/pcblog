@@ -54,7 +54,7 @@ func (s Subscriber) TableName() string {
 	return "user_subscriber"
 }
 
-// Article Defines the element of an article
+// Article Defines the element of an article used for searching
 type Article struct {
 	ArticleID      int64  `gorm:"column:article_id"`
 	UserID         int64  `gorm:"column:user_id"`
@@ -64,6 +64,19 @@ type Article struct {
 }
 
 func (a Article) TableName() string {
+	return "articles"
+}
+
+// ArticleToPublish Article Defines the article used to publish
+type ArticleToPublish struct {
+	ArticleID      int64  `gorm:"column:article_id;primary_key;AUTO_INCREMENT"`
+	UserID         int64  `gorm:"column:user_id"`
+	ArticleTitle   string `gorm:"column:article_title"`
+	ArticleContent string `gorm:"column:article_content"`
+	ArticleDate    int64  `gorm:"column:article_date"`
+}
+
+func (a ArticleToPublish) TableName() string {
 	return "articles"
 }
 

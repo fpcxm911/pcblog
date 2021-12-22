@@ -10,7 +10,7 @@ func (a *Article) Find(db *gorm.DB, author User) (articles []Article, err error)
 	return
 }
 
-func (a *Article) Add(db *gorm.DB) (err error) {
+func (a *ArticleToPublish) Add(db *gorm.DB) (err error) {
 	err = db.Create(&a).Error
 	return
 }

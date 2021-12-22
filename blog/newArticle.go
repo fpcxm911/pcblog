@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func (a *ArticleService) NewArticle(request database.Article, reply *string) error {
+func (a *ArticleService) NewArticle(request database.ArticleToPublish, reply *string) error {
 	db, err := database.SetupDefaultDatabase()
 	if err != nil {
 		return err

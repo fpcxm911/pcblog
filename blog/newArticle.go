@@ -7,8 +7,6 @@ import (
 	"gorm.io/gorm"
 )
 
-type ArticleService struct{}
-
 func (a *ArticleService) NewArticle(request database.Article, reply *string) error {
 	db, err := database.SetupDefaultDatabase()
 	if err != nil {

@@ -9,8 +9,6 @@ import (
 
 // ServiceName blog service
 const ServiceName = "BlogService"
-
-// LoginStatus message
 const LoginSuccess = "New account Registered. Login completely. Here is the inbox."
 const RegisterUsernameUsed = "this username has been taken. Please try a new one"
 const WrongUsername = "the provided username doesn't exist, please register first"

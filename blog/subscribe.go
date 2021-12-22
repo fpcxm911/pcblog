@@ -2,6 +2,7 @@ package pcblog
 
 import (
 	"errors"
+	"log"
 	"pcblog/database"
 )
 
@@ -46,8 +47,13 @@ func (u *UserService) Unsubscribe(request [2]database.User, reply *string) error
 		return err
 	}
 	user, err := request[0].FindOne(db)
+	if err != nil {
+		log.Println("user finding in user table:", err)
+		return errors.New("the user that you want to unsubscribe is not found")
+	}
 	unsubTarget, err := request[1].FindOne(db)
 	if err != nil {
+		log.Println("sub target finding in user table failed:", err)
 		return errors.New("the user that you want to unsubscribe is not found")
 	}
 
@@ -64,13 +70,16 @@ func (u *UserService) Unsubscribe(request [2]database.User, reply *string) error
 
 	err = unsuber.Update(db)
 	if err != nil {
+		log.Println("Update user_follower table failed:", err)
 		return errors.New("user_follower table update failed")
 	}
 	err = unsubed.Update(db)
 	if err != nil {
+		log.Println("Update user_subscriber table failed:", err)
 		return errors.New("user_subscriber table update failed")
 	}
 
 	*reply = "Unsubscribe successfully."
+	log.Println("Subscribe service working normally")
 	return nil
 }

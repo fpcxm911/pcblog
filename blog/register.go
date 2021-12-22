@@ -7,15 +7,13 @@ import (
 	"gorm.io/gorm"
 )
 
-type UserService struct{}
-
 func (u *UserService) Register(request database.User, reply *LoginResponse) error {
 
 	db, err := database.SetupDefaultDatabase()
 	if err != nil {
 		return err
 	}
-
+	*reply = LoginResponse{}
 	// check if the username has been used
 	//var repeatedUser = database.User{}
 	_, err = request.FindOne(db)

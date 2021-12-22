@@ -86,13 +86,13 @@ func main() {
 	//log.Println("User 2 sub user 1 successfully!")
 
 	// test publish new article
-	var reply *string
+	var reply string
 	article := database.ArticleToPublish{
 		UserID:         5,
 		ArticleTitle:   "TestUser1's article",
 		ArticleContent: "I want to see if I can receive rpc reply",
 		ArticleDate:    0,
 	}
-	err = client.NewArticle(article, reply)
+	err = client.NewArticle(article, &reply)
 	fmt.Println(reply)
 }

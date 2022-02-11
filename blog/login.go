@@ -21,7 +21,7 @@ func (u *UserService) Login(request database.User, reply *LoginResponse) error {
 		return errors.New(WrongUsername)
 	}
 
-	if rightAccount.Password != request.Password {
+	if rightAccount.Password != database.EncryptForDb(request.Password, request.Username) {
 		log.Println("Wrong password received")
 		return errors.New(WrongPassword)
 	}

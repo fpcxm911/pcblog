@@ -7,7 +7,6 @@ import (
 )
 
 func (u User) FindOne(db *gorm.DB) (response User, err error) {
-
 	err = db.Where("username = ?", u.Username).First(&response).Error
 	return
 }

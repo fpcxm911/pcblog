@@ -16,6 +16,16 @@ type User struct {
 	CreateTime int64  `gorm:"column:createtime"`
 }
 
+func GenerateUserStruct(ID int64, username string, decryptedPw string, CreateTime int64) User {
+	var user User
+	user = User{
+		ID:       ID,
+		Username: username,
+		Password: decryptedPw,
+	}
+	return user
+}
+
 func (u User) TableName() string {
 	return "users"
 }

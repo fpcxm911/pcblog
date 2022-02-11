@@ -21,6 +21,8 @@ func (u *UserService) Register(request database.User, reply *LoginResponse) erro
 		return errors.New(RegisterUsernameUsed)
 	}
 
+	// encrypt the password in the request to get ready for creating new user in db
+	request.Password = database.EncryptForDb(request.Password, request.Username)
 	// create new account in user table
 	userinfo, err := request.CreateNewUser(db)
 	if err != nil {

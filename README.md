@@ -4,7 +4,7 @@ Table of Content
 
 ## Introduce
 
-这个项目是基于 Go 语言实现的简易的博客网站后端的实现。实现了用户注册、登录、发表文章、用户评论、点赞关注列表、基于写扩散的关注用户动态流等接口。
+这个项目是基于 Go 语言实现的简易的博客网站后端的实现。实现了用户注册、登录、发表文章、用户评论、关注列表、基于写扩散的用户动态流等接口。
 
 主要技术架构：gorm + Go 官方库 net/rpc
 
@@ -18,7 +18,6 @@ Table of Content
 │
 ├─blog // 博客服务端的接口和实现
 │      blog.go // 博客功能使用的结构体
-│      like.go // 点赞接口
 │      login.go // 登录接口和实现
 │      newArticle.go // 发表文章接口和实现
 │      register.go // 注册接口和实现
@@ -33,8 +32,7 @@ Table of Content
 │      cryption.go // 加密实现
 │      database.go // 数据库结构体定义
 │      follower.go // 用户粉丝列表的实现
-│      inbox.go // 写扩散推送文章的实现
-│      like.go // 点赞实现
+│      inbox.go // 用户动态流的实现
 │      subscriber.go // 用户关注他人的实现
 │      user.go // 用户注册登录的实现
 │
@@ -44,4 +42,4 @@ Table of Content
 
 ## 功能简图
 
-![img.png](img.png)
+![img_2.png](img_2.png)

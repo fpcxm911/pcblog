@@ -51,39 +51,39 @@ func main() {
 		log.Fatal("Err Dial Client:", err)
 	}
 
-	// test register new account
-	//clientTestUser := database.User{
-	//	Username: "clientTest3",
-	//	Password: "admin",
-	//}
-	//var loginResponse blog.LoginResponse
-	//err = client.Register(clientTestUser, &loginResponse)
-	//if err != nil {
-	//	log.Println(err)
-	//}
-	//log.Println(loginResponse)
+	//test register new account
+	clientTestUser := database.User{
+		Username: "clientTest3",
+		Password: "admin",
+	}
+	var loginResponse blog.LoginResponse
+	err = client.Register(clientTestUser, &loginResponse)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(loginResponse)
 
-	// test subscribe
-	//clientTestUser1 := database.User{
-	//	Username: "clientTest1",
-	//	Password: "admin",
-	//}
-	//clientTestUser2 := database.User{
-	//	Username: "clientTest2",
-	//	Password: "admin",
-	//}
-	//clientTestUser3 := database.User{
-	//	Username: "clientTest3",
-	//	Password: "admin",
-	//}
-	//request := [2]database.User{clientTestUser3, clientTestUser1}
-	//var reply *string
-	//err = client.Unsubscribe(request, reply)
-	//if err != nil {
-	//	log.Println(err)
-	//	return
-	//}
-	//log.Println("User 2 sub user 1 successfully!")
+	//test subscribe
+	clientTestUser1 := database.User{
+		Username: "clientTest1",
+		Password: "admin",
+	}
+	clientTestUser2 := database.User{
+		Username: "clientTest2",
+		Password: "admin",
+	}
+	clientTestUser3 := database.User{
+		Username: "clientTest3",
+		Password: "admin",
+	}
+	request := [2]database.User{clientTestUser3, clientTestUser1}
+	var reply *string
+	err = client.Unsubscribe(request, reply)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	log.Println("User 2 sub user 1 successfully!")
 
 	// test publish new article
 	var reply string

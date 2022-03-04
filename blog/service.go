@@ -32,6 +32,13 @@ type ArticleInterface interface {
 	NewArticle(request database.ArticleToPublish, reply *string) error
 }
 
+// ServiceInterface interface for the rpc service, define the functions that blog service provides
+type ServiceInterface interface {
+	UserInterface
+	ArticleInterface
+	//InboxInterface
+}
+
 // InboxInterface method that can perform at inbox
 //type InboxInterface interface {
 //	//Subscribe subscribe another user
@@ -39,13 +46,6 @@ type ArticleInterface interface {
 //	//Unsubscribe unsub a user
 //	Unsubscribe(request []database.User, reply *string) error
 //}
-
-// ServiceInterface interface for the rpc service, define the functions that blog service provides
-type ServiceInterface interface {
-	UserInterface
-	ArticleInterface
-	//InboxInterface
-}
 
 // RegisterBlogService register the rpc service on svc
 func RegisterBlogService(svc ServiceInterface) error {

@@ -30,7 +30,7 @@ func TestArticle(t *testing.T) {
 		ArticleDate:    0,
 	}
 	DB, _ := SetupDefaultDatabase()
-	// test Add
+	//test Add
 	//assert.Equal(t, nil, a.Add(DB), "should equal")
 	//test Find
 	var u = User{
